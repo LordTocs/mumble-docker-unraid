@@ -156,9 +156,12 @@ echo "Handled INI location"
 
 if [[ -n "${MUMBLE_SUPERUSER_PASSWORD}" ]]; then
 	#Variable to change the superuser password
-    "${server_invocation[@]}" -supw "$MUMBLE_SUPERUSER_PASSWORD"
+    #"${server_invocation[@]}" -supw "$MUMBLE_SUPERUSER_PASSWORD"
+	server_invocation+=("-supw" "$MUMBLE_SUPERUSER_PASSWORD")
     echo "Successfully configured superuser password"
 fi
+
+echo "FINISHED CONFIG"
 
 # Show /data permissions, in case the user needs to match the mount point access
 echo "Running Mumble server as uid=$(id -u) gid=$(id -g)"
