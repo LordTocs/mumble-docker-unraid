@@ -61,18 +61,11 @@ ARG MUMBLE_CMAKE_ARGS=""
 RUN /mumble/scripts/clone.sh && /mumble/scripts/build.sh \
 && /mumble/scripts/copy_one_of.sh ./scripts/murmur.ini ./auxiliary_files/mumble-server.ini default_config.ini
 
-
-
 FROM base
-ARG MUMBLE_UID=99
-ARG MUMBLE_GID=100
-
-# RUN groupadd --gid $MUMBLE_GID mumble && useradd --uid $MUMBLE_UID --gid $MUMBLE_GID mumble
 
 COPY --from=build /mumble/repo/build/mumble-server /usr/bin/mumble-server
 COPY --from=build /mumble/repo/default_config.ini /etc/mumble/bare_config.ini
 
-# RUN mkdir -p /data && chown -R mumble:mumble /data && chown -R mumble:mumble /etc/mumble
 # USER nobody
 EXPOSE 64738/tcp 64738/udp
 COPY entrypoint.sh /entrypoint.sh
