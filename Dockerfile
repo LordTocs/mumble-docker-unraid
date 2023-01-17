@@ -72,7 +72,7 @@ ARG MUMBLE_GID=100
 COPY --from=build /mumble/repo/build/mumble-server /usr/bin/mumble-server
 COPY --from=build /mumble/repo/default_config.ini /etc/mumble/bare_config.ini
 
-RUN mkdir -p /data && chown -R mumble:mumble /data && chown -R mumble:mumble /etc/mumble
+# RUN mkdir -p /data && chown -R mumble:mumble /data && chown -R mumble:mumble /etc/mumble
 USER nobody
 EXPOSE 64738/tcp 64738/udp
 COPY entrypoint.sh /entrypoint.sh
