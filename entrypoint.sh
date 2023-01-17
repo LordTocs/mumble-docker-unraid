@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+echo "CONFIGURING MUMBLE"
+
 readonly DATA_DIR="/data"
 readonly BARE_BONES_CONFIG_FILE="/etc/mumble/bare_config.ini"
 readonly CONFIG_REGEX="^(\;|\#)?\ *([a-zA-Z_0-9]+)=.*"
@@ -140,17 +142,17 @@ else
 	} >> "$CONFIG_FILE"
 fi
 
+echo "Completed Config"
 # Additional environment variables
 
 [[ "$MUMBLE_VERBOSE" = true ]] && server_invocation+=( "-v" )
 
+echo "Handled Verbose"
+
 # Make sure the correct configuration file is used
 server_invocation+=( "-ini" "${CONFIG_FILE}")
 
-if [[ -f /run/secrets/MUMBLE_SUPERUSER_PASSWORD ]]; then
-	MUMBLE_SUPERUSER_PASSWORD="$(cat /run/secrets/MUMBLE_SUPERUSER_PASSWORD)"
-    echo "Read superuser password from container secret"
-fi
+echo "Handled INI location"
 
 if [[ -n "${MUMBLE_SUPERUSER_PASSWORD}" ]]; then
 	#Variable to change the superuser password
