@@ -5,7 +5,7 @@ Mumble is a free, open source, low latency, high quality voice chat application.
 <p align="center"><b><a href="https://mumble.info">Mumble Website</a> • <a href="https://github.com/mumble-voip/mumble">Mumble Source</a></b></p>
 
 This is the official code of the Mumble Docker image for self-hosting the **Mumble server**. The image is available for download on
-**[Dockerhub](https://hub.docker.com/r/mumblevoip/mumble-server)**.
+**[Dockerhub](https://hub.docker.com/r/lordtocs/mumble-server)**.
 
 -----
 
@@ -38,7 +38,7 @@ $ docker run --detach \
              --publish 64738:64738/udp \
              --volume ./data/mumble:/data \
              --restart on-failure \
-             mumblevoip/mumble-server:<tag>
+             lordtocs/mumble-server:<tag>
 ```
 For possible values of `<tag>` see below.
 
@@ -46,7 +46,7 @@ For possible values of `<tag>` see below.
 ```yaml
 services:
     mumble-server:
-        image: mumblevoip/mumble-server:<tag>
+        image: lordtocs/mumble-server:<tag>
         container_name: mumble-server
         hostname: mumble-server
         restart: on-failure
@@ -63,7 +63,7 @@ have to adapt the used port for whatever you configured in the server's configur
 
 ### Tags
 
-For an up-to-date list of available tags, see [Dockerhub](https://hub.docker.com/r/mumblevoip/mumble-server/tags). Generally, you can either use
+For an up-to-date list of available tags, see [Dockerhub](https://hub.docker.com/r/lordtocs/mumble-server/tags). Generally, you can either use
 `latest` to always fetch the latest version or tags of the form `vX.Y.Z` corresponding to the respective stable releases of Mumble, e.g. `v1.4.230`.
 
 
@@ -111,7 +111,7 @@ podman run --detach \
            --secret MUMBLE_SUPERUSER_PASSWORD \
            --volume ./data/mumble:/data \
            --restart on-failure \
-           mumblevoip/mumble-server:<tag>
+           lordtocs/mumble-server:<tag>
 ```
 
 ### Additional variables
