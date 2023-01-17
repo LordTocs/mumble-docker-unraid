@@ -164,7 +164,7 @@ fi
 echo "FINISHED CONFIG"
 
 # Show /data permissions, in case the user needs to match the mount point access
-echo "Running Mumble server as uid=$(id -u) gid=$(id -g)"
+echo "Running Mumble server as $USER uid=$(id -u) gid=$(id -g)"
 echo "\"${DATA_DIR}\" has the following permissions set:"
 echo "  $( stat ${DATA_DIR} --printf='%A, owner: \"%U\" (UID: %u), group: \"%G\" (GID: %g)' )"
 
